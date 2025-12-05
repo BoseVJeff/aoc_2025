@@ -24,14 +24,9 @@ Future<void> main(List<String> args) async {
   print(fresh.length);
   print(Map.fromEntries(fresh));
 
-  List<Range> mergedRanges = fresh
-      .map((e) => e.value)
-      .fold<Iterable<Range>>(
-        [],
-        (previousValue, element) => previousValue.followedBy(element),
-      )
-      .toSet()
-      .toList();
+  // Thanks /u/profile_issues on /r/adventofcode for pointing out that the Elves want the *entire* list
+  // https://www.reddit.com/r/adventofcode/comments/1pepari/comment/nse63v6/
+  List<Range> mergedRanges = input.ranges;
   mergedRanges.sort();
   print(mergedRanges.join("\n"));
   print("--------");
