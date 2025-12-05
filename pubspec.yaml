@@ -13,6 +13,7 @@ dependencies:
   html: ^0.15.6
   http: ^1.6.0
   equatable: ^2.0.7
+  collection: ^1.19.1
 
 dev_dependencies:
   coverage: ^1.15.0

@@ -101,6 +101,28 @@ void main() {
         expect(ranges, equals([Range(1, 7)]));
       });
     });
+    test('1-20, 5-9, 8-30', () {
+      List<Range> ranges = [Range(1, 20), Range(5, 9), Range(8, 30)];
+      ranges = ranges.merge();
+      expect(ranges, equals([Range(1, 30)]));
+    });
+    test('3-5, 10-14, 16-20, 9-21', () {
+      List<Range> ranges = [
+        Range(3, 5),
+        Range(10, 14),
+        Range(16, 20),
+        Range(9, 21),
+      ];
+      ranges = ranges.merge();
+      expect(ranges, equals([Range(3, 5), Range(9, 21)]));
+
+      int size = 0;
+      for (var r in ranges) {
+        size += r.size;
+      }
+
+      expect(size, 16);
+    });
     test('External Test Case', () {
       String input =
           """

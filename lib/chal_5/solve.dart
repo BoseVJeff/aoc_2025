@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:collection/collection.dart';
 import 'package:path/path.dart';
 
 Future<void> main(List<String> args) async {
@@ -21,7 +22,7 @@ Future<void> main(List<String> args) async {
   );
 
   print(fresh.length);
-  print(fresh);
+  print(Map.fromEntries(fresh));
 
   List<Range> mergedRanges = fresh
       .map((e) => e.value)
@@ -40,7 +41,10 @@ Future<void> main(List<String> args) async {
   for (var r in mergedRanges) {
     size += r.size;
   }
+  print("--------");
   print(size);
+  ListEquality listEquality = ListEquality();
+  print(listEquality.equals(mergedRanges, mergedRanges.merge()));
   // print(ids.toList()..sort());
 }
 
